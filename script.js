@@ -17,7 +17,7 @@ async function getTheQuote() {
     quoteText.innerText = data.quoteText;
     quoteAuthor.innerText = data.authorText;
   } catch (error) {
-    getTheQuote();
+    // getTheQuote();
     // Try getting the quote again after it fails
     console.log("Sorry couldnt get quote", error);
   }
