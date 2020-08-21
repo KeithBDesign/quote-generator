@@ -15,9 +15,9 @@ async function getTheQuote() {
     const response = await fetch(proxyURL + apiURL);
     const data = await response.json();
     quoteText.innerText = data.quoteText;
-    authorText.innerText = data.quoteAuthor;
+    authorText.innerText = "- " + data.quoteAuthor;
   } catch (error) {
-    // getTheQuote();
+    //getTheQuote();
     // Try getting the quote again after it fails
     console.log("Sorry couldnt get quote", error);
   }
