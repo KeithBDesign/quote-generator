@@ -7,12 +7,12 @@ const loader = document.querySelector("#loader");
 
 // Show and hide the loading spinner
 
-function showLoading() {
+function showLoadingSpinner() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
 
-function hideLoading() {
+function removeLoadingSpinner() {
   quoteContainer.hidden = false;
   loader.hidden = true;
 }
@@ -20,7 +20,7 @@ function hideLoading() {
 // Get quote from API
 
 async function getTheQuote() {
-  showLoading();
+  showLoadingSpinner();
   const proxyURL = "https://ancient-hollows-64688.herokuapp.com/";
   const apiURL =
     "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
@@ -37,12 +37,12 @@ async function getTheQuote() {
     quoteText.innerText = data.quoteText;
     // If Author is blank then replace with unknown
     if (data.quoteAuthor === " ") {
-      authorText.innerHTML = "- Unknown";
+      authorText.innerHTML = "Unknown";
     } else {
       authorText.innerText = "- " + data.quoteAuthor;
 
       // Stop the loading spinner
-      hideLoading();
+      removeLoadingSpinner();
     }
   } catch (error) {
     getTheQuote();
